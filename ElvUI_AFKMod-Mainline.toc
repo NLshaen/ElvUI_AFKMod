@@ -3,7 +3,7 @@
 ## SavedVariables: ElvUI_AFKMode
 ## RequiredDeps: ElvUI
 ## Interface: 110100
-## Version: 0.1.0
+## Version: 0.1.2
 ## IconTexture: Interface\AddOns\ElvUI_AFKMode\Button
 
 locales\load_locales.xml
