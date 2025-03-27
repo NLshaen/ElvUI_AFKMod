@@ -71,7 +71,7 @@ function AFKMod:InsertOptions()
 	E.Options.args.AFKMod = {
 		order = 4,
 		type = "group",
-		name = "AFKMod",
+		name = "|cFF8866ccAFKMod|r",
 		args = {
 			AFKMod_name = {
 				order = 1,

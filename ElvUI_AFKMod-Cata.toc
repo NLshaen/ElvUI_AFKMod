@@ -1,10 +1,10 @@
 ## Author: NLshaaen alias Trapman Sulfuron
 ## Title: |cff1784d1ElvUI|r |cFFdd2244Another AFKMod|r
-## SavedVariables: ElvUI_AFKMode
+## SavedVariables: ElvUI_AFKMod
 ## RequiredDeps: ElvUI
 ## Interface: 40402
-## Version: 0.1.2
-## IconTexture: Interface\AddOns\ElvUI_AFKMode\Button
+## Version: @project-version@
+## IconTexture: Interface\AddOns\ElvUI_AFKMod\Media\Textures\button.tga
 
 locales\load_locales.xml
 core.lua
