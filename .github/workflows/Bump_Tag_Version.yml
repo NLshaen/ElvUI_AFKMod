@@ -1,11 +1,15 @@
 name: Bump Tag Version
 on:
+  pull_request:
+    types:
+      - closed
   push:
     branches:
       - master
 
 jobs:
   build:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,9 +19,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: 'minor'
-      - name: Compile Release Notes
-        uses: csexton/fictional-release-note-compiler@dne
-        id: notes
       - name: Create Release
         uses: actions/create-release@master
         with:
