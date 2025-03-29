@@ -22,3 +22,4 @@ jobs:
         with:
           fetch-depth: 100
       - name: Release Job
+      
