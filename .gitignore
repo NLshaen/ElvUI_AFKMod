@@ -1,6 +1,4 @@
-.release/
+#.release/
 
 core_backup.lua
 core_ori.lua
-
-.github/workflows/create_release.yml
