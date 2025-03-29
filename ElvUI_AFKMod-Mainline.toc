@@ -6,6 +6,10 @@
 ## Version: @project-version@
 ## IconTexture: Interface\AddOns\ElvUI_AFKMod\Media\Textures\button.tga
 
+## X-Curse-Project-ID: 1231100
+## X-WoWI-ID: 356460
+## X-Wago-ID: aNevVd62
+
 locales\load_locales.xml
 core.lua
 options.lua
