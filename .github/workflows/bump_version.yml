@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        default_bump: 'minor'
+        #default_bump: 'minor'
         ref: ${{ github.event.pull_request.merge_commit_sha }}
         fetch-depth: '0'
 
