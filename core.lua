@@ -531,7 +531,7 @@ function AFKMod:Initialize()
 	AFKMod.Initialized = true
 
 	EP:RegisterPlugin(AddOnName, AFKMod.InsertOptions)
-	print(Title..' [v'..Version..'] '..By..' loaded successfully.')
+	print(Title..' [v'..Version..'] '..By..' loaded successfully !')
     --self:RegisterEvent("PLAYER_FLAGS_CHANGED", "OnEvent")
 
 	AFKMod:ToggleAFKMod()
