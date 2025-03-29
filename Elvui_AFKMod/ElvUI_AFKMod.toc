@@ -10,6 +10,6 @@
 ## X-Wago-ID: aNevVd62
 ## IconTexture: Interface\AddOns\ElvUI_AFKMod\Media\Textures\Button
 
-locales\load_locales.xml
+Locales\load_locales.xml
 core.lua
 options.lua
