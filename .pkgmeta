@@ -11,4 +11,4 @@ move-folders:
     ElvUI_AFKMod/ElvUI_AFKMod: ElvUI_AFKMod
 ignore:
     - ElvUI_AFKMod/.github/
-enable-toc-creation: yes
+enable-toc-creation: no
