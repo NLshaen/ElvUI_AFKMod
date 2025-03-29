@@ -1,4 +1,4 @@
-package-as: ElvUI_AFKMod/ElvUI_AFKMod
+package-as: ElvUI_AFKMod
 enable-nolib-creation: no
 externals:
   #For example thanks Repooc
@@ -9,6 +9,6 @@ manual-changelog:
     markup-type: markdown
 move-folders:
     ElvUI_AFKMod/ElvUI_AFKMod: ElvUI_AFKMod
-ignore:
-    - ElvUI_AFKMod/.github/
+#ignore:
+#    - ElvUI_AFKMod/.github/
 enable-toc-creation: yes
