@@ -1,0 +1,15 @@
+## Interface: 110100, 40402, 11506
+## Title: |cff1784d1ElvUI|r |cFFdd2244Another AFKMod|r
+## Author: NLshaaen alias Trapman Sulfuron
+## Version: @project-version@
+## RequiredDeps: ElvUI
+## DefaultState: Enabled
+## SavedVariables: ElvUI_AFKMod
+## X-Curse-Project-ID: 1231100
+## X-WoWI-ID: 356460
+## X-Wago-ID: aNevVd62
+## IconTexture: Interface\AddOns\ElvUI_AFKMod\Media\Textures\Button
+
+locales\load_locales.xml
+core.lua
+options.lua
