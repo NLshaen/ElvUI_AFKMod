@@ -8,7 +8,7 @@ manual-changelog:
     filename: CHANGELOG.md
     markup-type: markdown
 move-folders:
-    ElvUI_AFKMod : ElvUI_AFKMod
+    ElvUI_AFKMod/ElvUI_AFKMod: ElvUI_AFKMod
 ignore:
     - .github
 package-as: ElvUI_AFKMod
