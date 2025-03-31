@@ -1,5 +1,6 @@
 -- import: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
-local AFKMod, E, L, V, P, G = unpack(select(2, ...))
+--local AFKMod, E, L, V, P, G = unpack(select(2, ...))
+local AFKMod, E, L, V, P, G = unpack(ElvUI)
 
 function AFKMod:SetupOptions()
 	-- Register plugin so options are properly inserted when config is loaded

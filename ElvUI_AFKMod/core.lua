@@ -1,32 +1,29 @@
 -- import: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local E, L, V, P, G = unpack(ElvUI)
 local EP = LibStub("LibElvUIPlugin-1.0")
-local CH = E:GetModule('Chat')
+--local CH = E:GetModule('Chat')
 local AddOnName, Engine = ...
 --local addonName, addonTable = ...
 
 -- Create a plugin within ElvUI and adopt AceHook-3.0, AceEvent-3.0 and AceTimer-3.0. We can make use of these later.
 local AFKMod = E:NewModule('AFKMod', 'AceConsole-3.0', 'AceHook-3.0', 'AceEvent-3.0', 'AceTimer-3.0')
+--[[
 Engine[1] = AFKMod
 Engine[2] = E
 Engine[3] = L
 Engine[4] = V
 Engine[5] = P
 Engine[6] = G
+]]
 _G[AddOnName] = Engine
 
-E.db.AFKMod = E.db.AFKMod or {}
 AFKMod.Configs = {}
 AFKMod.Title = C_AddOns.GetAddOnMetadata(AddOnName, 'Title')
 AFKMod.Version = C_AddOns.GetAddOnMetadata(AddOnName, 'Version')
---Version = tonumber(Version)
 
 local Title = AFKMod.Title
 local Version = AFKMod.Version
 local By =  'by |cFF8866ccNLshaaen|r alias |cFF6c914dTrapman|r Sulfuron'
---local title = print("|cFFdd2244%s|r", Title)
---local by = print("by |cFF8866ccNLshaaen|r alias |cFF34dd61Trapman Sulfuron|r |cFFdd2244v%s|r", Version)
---local title = SetFormattedText('%s', tostring(Title))
 
 -- Default options
 P["AFKMod"] = {
@@ -41,6 +38,9 @@ P["AFKMod"] = {
 -- Function we can call when a setting changes.
 -- In this case it just checks if "SomeToggleOption" is enabled. If it is it prints the value of "SomeRangeOption"
 -- otherwise it tells you that "SomeToggleOption" is disabled.
+
+--local AFKMod = E.db.AFKMod or {}
+
 function AFKMod:UpdateOptions()
 	local enabled = E.db.AFKMod.enabled
 	local dark = E.db.AFKMod.dark
@@ -83,39 +83,39 @@ function AFKMod:InsertOptions()
 				type = "toggle",
 				name = "Enabled",
 				desc = "Display the AFKMOD screen ON or OFF",
+				get = function(info)
+					return E.db.AFKMod.enabled
+				end,
 				set = function(info, value)
 					E.db.AFKMod.enabled = value
 					AFKMod:UpdateOptions()-- We changed a setting, call our Update function
 				end,
-				get = function(info)
-					return E.db.AFKMod.enabled
-				end
 			},
 			AFKMod_Dark = {
 				order = 3,
 				type = "toggle",
 				name = "Dark Mod enabled",
 				desc = "Activate the Dark Mod AFK display !!!",
+				get = function(info)
+					return E.db.AFKMod.dark
+				end,
 				set = function(info, value)
 					E.db.AFKMod.dark = value
 					AFKMod:UpdateOptions() -- We changed a setting, call our Update function
 				end,
-				get = function(info)
-					return E.db.AFKMod.dark
-				end
 			},
 			AFKMod_White = {
 				order = 4,
 				type = "toggle",
 				name = "White Mod enabled",
 				desc = "Activate the White Mod AFK display !!!",
+				get = function(info)
+					return E.db.AFKMod.white
+				end,
 				set = function(info, value)
 					E.db.AFKMod.white = value
 					AFKMod:UpdateOptions() -- We changed a setting, call our Update function
 				end,
-				get = function(info)
-					return E.db.AFKMod.white
-				end
 			},
 		},
 	}
@@ -166,11 +166,14 @@ local ChatHistory_GetAccessID = ChatHistory_GetAccessID
 local ChatFrame_GetMobileEmbeddedTexture = ChatFrame_GetMobileEmbeddedTexture
 local C_PetBattles_IsInBattle = C_PetBattles and C_PetBattles.IsInBattle
 
+--[[
 local CinematicFrame = _G.CinematicFrame
 local CharacterFrame = _G.CharacterFrame
 local MovieFrame = _G.MovieFrame
 local DNDstr = _G.DND
 local AFKstr = _G.AFK
+
+]]
 
 local CAMERA_SPEED = 0.025
 local ignoreKeys = {
@@ -281,24 +284,6 @@ function AFKMod:EnableAFKMode()
 		afk.text:SetFont("Fonts\\EXPRESSWAY.TTF", 24, "OUTLINE")
         afk.text:SetPoint("TOP", afk, "TOP", 0, -15)
         afk.text:SetText(format("|cff00ff00%s|r is AFK", UnitName("player")))
-
---[[
-        -- Create Top Transparent Frame
-        self.TopFrame = CreateFrame("Frame", "TopAFKFrame", afk)
-		self.TopFrame:SetTemplate('Transparent')
-        self.TopFrame:SetPoint("TOP", afk, "TOP", 0, 0)
-        self.TopFrame:SetSize(afk:GetWidth(), 200)
-        self.TopFrame:SetBackdrop({ bgFile = "Interface/Tooltips/UI-Tooltip-Background" })
-        self.TopFrame:SetBackdropColor(0, 0, 0, 0.95)
-
-        -- Create Bottom Transparent Frame
-        self.BottomFrame = CreateFrame("Frame", "BottomAFKFrame", afk)
-		self.BottomFrame:SetTemplate('Transparent')
-        self.BottomFrame:SetPoint("BOTTOM", afk, "BOTTOM", 0, 0)
-        self.BottomFrame:SetSize(afk:GetWidth(), 200)
-        self.BottomFrame:SetBackdrop({ bgFile = "Interface/Tooltips/UI-Tooltip-Background" })
-        self.BottomFrame:SetBackdropColor(0, 0, 0, 0.95)
-]]
 
 		-- Create Logo NLUI Transparent Frame
 		self.LogoFrame = CreateFrame("Frame", "NLUILogoFrame", afk)
@@ -489,7 +474,7 @@ function AFKMod:ToggleAFKMod()
 		AFKMod:RegisterEvent('ACTIVE_TALENT_GROUP_CHANGED', 'OnEvent')
 
 		AFKMod:RegisterEvent('UNIT_STATS', 'OnEvent')
-		AFKMod:RegisterEvent('PLAYER_ENTERING_WORLD', 'OnEvent')
+		--AFKMod:RegisterEvent('PLAYER_ENTERING_WORLD', 'OnEvent')
 		AFKMod:RegisterEvent('PLAYER_EQUIPMENT_CHANGED', 'OnEvent')
 		AFKMod:RegisterEvent('PLAYER_SPECIALIZATION_CHANGED', 'OnEvent')
 
@@ -501,14 +486,14 @@ function AFKMod:ToggleAFKMod()
 		E:SetCVar('autoClearAFK', 1)
 	else
 
-		AFKMod:RegisterEvent('GUILD_ROSTER_UPDATE')
-		AFKMod:RegisterEvent('PLAYER_GUILD_UPDATE')
-		AFKMod:RegisterEvent('ACTIVE_TALENT_GROUP_CHANGED')
+		AFKMod:UnregisterEvent('GUILD_ROSTER_UPDATE')
+		AFKMod:UnregisterEvent('PLAYER_GUILD_UPDATE')
+		AFKMod:UnregisterEvent('ACTIVE_TALENT_GROUP_CHANGED')
 
 		AFKMod:UnregisterEvent('UNIT_STATS')
-		AFKMod:UnregisterEvent('PLAYER_ENTERING_WORLD')
+		--AFKMod:UnregisterEvent('PLAYER_ENTERING_WORLD')
 		AFKMod:UnregisterEvent('PLAYER_EQUIPMENT_CHANGED')
-		AFKMod:RegisterEvent('PLAYER_SPECIALIZATION_CHANGED')
+		AFKMod:UnregisterEvent('PLAYER_SPECIALIZATION_CHANGED')
 
 		AFKMod:UnregisterEvent('PLAYER_FLAGS_CHANGED')
 		AFKMod:UnregisterEvent('PLAYER_REGEN_DISABLED')
@@ -529,6 +514,8 @@ end
 
 function AFKMod:Initialize()
 	AFKMod.Initialized = true
+
+	E.db.AFKMod = E.db.AFKMod or CopyTable(P.AFKMod)
 
 	EP:RegisterPlugin(AddOnName, AFKMod.InsertOptions)
 	print(Title..' [v'..Version..'] '..By..' loaded successfully !')
